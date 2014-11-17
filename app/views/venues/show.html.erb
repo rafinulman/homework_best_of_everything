@@ -6,8 +6,8 @@
   <dt>Name</dt>
   <dd><%= @venue.name %></dd>
 
-  <dt>Neighborhood ID</dt>
-  <dd><%= @venue.neighborhood_id %></dd>
+  <dt>Neighborhood</dt>
+  <dd><%= Neighborhood.find_by({:id=>@venue.neighborhood_id}).name %>, <%=Neighborhood.find_by({:id=>@venue.neighborhood_id}).city%></dd>
 
   <dt>Address</dt>
   <dd><%= @venue.address %></dd>
@@ -48,6 +48,13 @@
     </script>
     <div id="map-canvas"></div>
   </dd>
+
+  <dt>Favorites</dt>
+  <dd><ul>
+  <% @favorites.each do |dish| %>
+  <li><a href = "http://localhost:3000/dishes/<%=dish.dish_id%>"> <%=Dish.find_by({:id=>dish.dish_id}).name%></a> (<a href = "http://localhost:3000/venues/<%=dish.venue_id%>"><%=Venue.find_by({:id=>dish.venue_id}).name%></a>)</li>
+  <% end %>
+  </ul></dd>
 </dl>
 
 

@@ -6,7 +6,14 @@
   <dt>Name</dt>
   <dd><%= @dish.name %></dd>
 
-  <dt>Cuisine ID</dt>
-  <dd><%= @dish.cuisine_id %></dd>
+  <dt>Cuisine</dt>
+  <dd><%= Cuisine.find_by({:id=>@dish.cuisine_id }).name%></dd>
+
+  <dt>Favorites</dt>
+  <dd><ul>
+  <% @favorites.each do |dish| %>
+  <li><a href = "http://localhost:3000/users/<%=dish.user_id%>"> <%=User.find_by({:id=>dish.user_id}).username%></a> (<a href = "http://localhost:3000/venues/<%=dish.venue_id%>"><%=Venue.find_by({:id=>dish.venue_id}).name%></a>)</li>
+  <% end %>
+  </ul></dd>
 
 </dl>
