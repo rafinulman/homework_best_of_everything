@@ -9,7 +9,7 @@
   <dt>City</dt>
   <dd><%= @neighborhood.city %></dd>
 
-  <dt>Favorite dishes</dt>
+  <dt>Venues</dt>
   <dd><ul>
   <% @venues.each do |venue| %>
   <li><a href = "http://localhost:3000/venues/<%=venue.id%>"> <%=venue.name%></a> </li>
